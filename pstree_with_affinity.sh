@@ -12,7 +12,7 @@ pstree_output=$(pstree -t -a -p "$1")
 # 输出进程树并为每个进程和线程打印亲和性
 echo "$pstree_output" | while read -r line; do
   # 获取进程的 PID
-  pid=$(echo "$line" |awk -F',' '{print $2}' | tr -d ' '|sed -E 's/[^0-9]*([0-9]+)-.*/\1/')
+  pid=$(echo "$line" |awk -F',' '{print $2}' |sed -E 's/([0-9]+) .*/\1/')
   #echo $pid
   # 如果是进程，获取其亲和性
   if [ -n "$pid" ]; then
