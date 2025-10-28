@@ -6,6 +6,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+# sudo apt install psmisc
 # 获取 pstree 输出，带进程和线程信息
 pstree_output=$(pstree -t -a -p "$1")
 #echo $pstree_output
